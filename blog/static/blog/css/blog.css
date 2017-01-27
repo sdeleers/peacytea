@@ -1,0 +1,58 @@
+.blog-post h1 {
+    font-family: 'CMS', 'Droid Serif', Georgia, Times, serif;
+    font-size: 300%;
+    line-height: 65px;
+}
+
+.blog-post {
+    font-size: 110%;
+}
+
+.blog-post p {
+    text-align:justify;
+}
+
+/* Hack: use h2 header as a subscript below images, since it's not supported in RichTextField. */
+.blog-post h2 {
+    font-size: 90%;
+    margin-top: -20px;
+    margin-bottom: 25px;
+    color: gray;
+    text-align: center;
+    font-weight: normal;
+}
+
+div.responsive-object {
+    padding-bottom: 5% !important;
+}
+
+div.responsive-object iframe {
+    width: 640px;
+    height: 360px;
+    display:block;
+    margin:auto;
+}
+
+p img {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 20px;
+}
+
+.block-code_python pre {
+    padding: 0px;
+    border-radius: 3px;
+}
+
+.block-code_nohighlight pre {
+    border-radius: 3px;
+}
+
+code.python {
+    padding: 16px;
+}
+
+pre code {
+    white-space: pre;
+}

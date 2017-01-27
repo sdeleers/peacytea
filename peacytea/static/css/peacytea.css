@@ -1,0 +1,56 @@
+/* Navbar color */
+.navbar-default {
+	background-color: whitesmoke;
+}
+
+/* Navbar height */
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 80px;
+    height: 80px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/*Text size peacytea*/
+a.navbar-brand {
+	font-size: 25px;
+}
+
+/*Text size blog, about, contact*/
+.navbar-nav li a {
+	font-size: 16px;
+}
+
+/* Text color */
+.navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+	color: black;
+}
+
+/* Spacing between peacytea and blog, about, contact */
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: right;
+	}
+}
+
+/* Spacing between peacytea and blog, about, contact */
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand {
+    	margin-left: -15px;
+	margin-bottom: 3px;
+  }
+}
+
+.card {
+    position: relative;
+    display: flex;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    display: block;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #fbfbfb;
+}
+
