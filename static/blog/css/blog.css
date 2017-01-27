@@ -1,0 +1,10 @@
+.blog-post h1 {
+    font-family: 'CMS', 'Droid Serif', Georgia, Times, serif;
+    font-size: 300%;
+    line-height: 65px;
+}
+
+.blog-post p {
+    text-align:justify;
+    font-size: 110%;
+}
