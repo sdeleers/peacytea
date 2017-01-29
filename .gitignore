@@ -6,3 +6,5 @@ __pycache__/
 *.swo
 .idea/
 peacytea/settings/local_production.py
+*.pyc
+peacytea/wsgi.py
