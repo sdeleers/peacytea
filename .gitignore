@@ -5,3 +5,4 @@ __pycache__/
 *.swp
 *.swo
 .idea/
+peacytea/settings/local_production.py

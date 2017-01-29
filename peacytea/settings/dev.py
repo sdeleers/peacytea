@@ -8,9 +8,16 @@ DEBUG = True
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'i=no^sa588d)98=*bq-@52uo06*y+#6_^l%jf^@yb7--ziifzj'
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Database
+# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 try:
     from .local import *
