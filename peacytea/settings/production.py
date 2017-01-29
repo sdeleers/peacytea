@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from .base import *
 
 # Sensitive and machine-specific info (e.g. database password)
-from .production_local import *
+from .local_production import *
 
 DEBUG = False
 
