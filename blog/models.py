@@ -9,15 +9,20 @@ from wagtail.wagtailcore import blocks
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
+    most_recent_post_first = models.BooleanField(default=True)
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full")
+        FieldPanel('intro', classname="full"),
+        FieldPanel('most_recent_post_first', classname="full")
     ]
 
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(BlogIndexPage, self).get_context(request)
-        blogpages = self.get_children().live().order_by('-first_published_at')
+        if self.most_recent_post_first:
+            blogpages = self.get_children().live().order_by('-first_published_at')
+        else:
+            blogpages = self.get_children().live().order_by('first_published_at')
         context['blogpages'] = blogpages
         return context
 
