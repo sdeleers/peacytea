@@ -5,6 +5,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'i=no^sa588d)98=*bq-@52uo06*y+#6_^l%jf^@yb7--ziifzj'
 

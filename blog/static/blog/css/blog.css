@@ -39,3 +39,21 @@ img {
   margin-right:auto;
   margin-top: 20px;
 }
+
+.block-code_python pre {
+    padding: 0px;
+    border-radius: 3px;
+}
+
+.block-code_nohighlight pre {
+    border-radius: 3px;
+}
+
+code.python {
+    padding: 16px;
+}
+
+pre code {
+    white-space: pre;
+}
+

@@ -2,9 +2,24 @@ from django.db import models
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.fields import StreamField
+
+
+class CodeBlockPython(blocks.TextBlock):
+    class Meta:
+        template = 'blog/code_python.html'
+        icon = 'code'
+        label = 'Code Python'
+
+
+class CodeBlockNoHighlight(blocks.TextBlock):
+    class Meta:
+        template = 'blog/code_nohighlight.html'
+        icon = 'code'
+        label = 'Code No Highlight'
 
 
 class BlogIndexPage(Page):
@@ -41,4 +56,25 @@ class BlogPage(Page):
         FieldPanel('date'),
         FieldPanel('intro'),
         FieldPanel('body', classname="full")
+    ]
+
+class BlogPageWithCode(Page):
+    date = models.DateField("Post date")
+    intro = models.CharField(max_length=250, blank=True)
+    body = StreamField([
+        ('rich_text', blocks.RichTextBlock(icon='doc-full', label='Rich Text')),
+        ('code_python', CodeBlockPython()),
+        ('code_nohighlight', CodeBlockNoHighlight()),
+        ('html', blocks.RawHTMLBlock(icon='site', label='HTML'))
+    ])
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('date'),
+        FieldPanel('intro'),
+        StreamFieldPanel('body')
     ]

@@ -43,6 +43,12 @@
         {# Google analytics #}
         <script type="text/javascript" src="{% static 'js/google_analytics.js' %}"></script>
 
+        {# Code highlighting #}
+        <!--<link rel="stylesheet" href="{% static 'blog/css/solarized_light.css' %}">-->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.9.0/styles/default.min.css">
+        <script src="//cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
