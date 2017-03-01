@@ -14,9 +14,11 @@
             <div class="intro">{{ page.intro|richtext }}</div>
 
             {% for post in blogpages %}
-                <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+            <div class="card">
+                <h4><a href="{% pageurl post %}">{{ post.title }}</a></h4>
                 <!--{{ post.specific.intro }}-->
-                {{ post.specific.intro|richtext }}
+                <p>{{ post.specific.intro|richtext }}</p>
+            </div>
             {% endfor %}
         </div>
         <div class="col-md-4"></div>
@@ -24,3 +26,12 @@
 </div>
 
 {% endblock %}
+
+                <!--<div class="card" style="margin-bottom: 10px;">-->
+                  <!--<div class="card-block">-->
+                        <!--<h4 class="card-title"><a href="{% pageurl post %}">{{ post.title }}</a></h4>-->
+                        <!--&lt;!&ndash;{{ post.specific.intro }}&ndash;&gt;-->
+                        <!--<p class="card-text">{{ post.specific.intro|richtext }}</p>-->
+
+                    <!--</div>-->
+                <!--</div>-->

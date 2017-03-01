@@ -42,3 +42,15 @@ a.navbar-brand {
   }
 }
 
+.card {
+    position: relative;
+    display: flex;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    display: block;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #fbfbfb;
+}
+
