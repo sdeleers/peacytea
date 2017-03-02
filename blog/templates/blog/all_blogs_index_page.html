@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="blog-post col-md-8">
+            {% for blogindexpage in blogindexpages %}
+            <div style="margin-bottom: 50px;">
+                <h1>{{ blogindexpage.title }}</h1>
+
+                <div class="intro">{{ blogindexpage.specific.intro|richtext }}</div>
+                {% for blogpage in blogindexpage.blogpages %}
+                <div class="card">
+                    <h4><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></h4>
+                    <!--{{ post.specific.intro }}-->
+                    <p>{{ blogpage.specific.intro|richtext }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+{% endblock %}

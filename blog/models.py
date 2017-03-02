@@ -22,6 +22,32 @@ class CodeBlockNoHighlight(blocks.TextBlock):
         label = 'Code No Highlight'
 
 
+class AllBlogsIndexPage(Page):
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super(AllBlogsIndexPage, self).get_context(request)
+
+
+        children = self.get_children().live()
+        blogindexpages = list()
+
+        for child in children:
+            # Only blog index pages will succeed in try clause
+            try:
+                if child.specific.most_recent_post_first:
+                    blogpages = child.get_children().live().order_by('-blogpage__date', '-first_published_at')
+                else:
+                    blogpages = child.get_children().live().order_by('blogpage__date', 'first_published_at')
+                child.blogpages = blogpages
+                blogindexpages.append(child)
+            except:
+                pass
+
+        context['blogindexpages'] = blogindexpages
+
+        return context
+
+
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
     most_recent_post_first = models.BooleanField(default=True)
@@ -57,6 +83,7 @@ class BlogPage(Page):
         FieldPanel('intro'),
         FieldPanel('body', classname="full")
     ]
+
 
 class BlogPageWithCode(Page):
     date = models.DateField("Post date")
