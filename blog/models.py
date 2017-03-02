@@ -27,19 +27,16 @@ class AllBlogsIndexPage(Page):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(AllBlogsIndexPage, self).get_context(request)
 
+        blogindexpages = self.get_children().live().filter(blogindexpage__most_recent_post_first__isnull = False)
 
-        children = self.get_children().live()
-        blogindexpages = list()
-
-        for child in children:
+        for blogindexpage in blogindexpages:
             # Only blog index pages will succeed in try clause
             try:
-                if child.specific.most_recent_post_first:
-                    blogpages = child.get_children().live().order_by('-blogpage__date', '-first_published_at')
+                if blogindexpage.specific.most_recent_post_first:
+                    blogpages = blogindexpage.get_children().live().order_by('-blogpage__date', '-first_published_at')
                 else:
-                    blogpages = child.get_children().live().order_by('blogpage__date', 'first_published_at')
-                child.blogpages = blogpages
-                blogindexpages.append(child)
+                    blogpages = blogindexpage.get_children().live().order_by('blogpage__date', 'first_published_at')
+                blogindexpage.blogpages = blogpages
             except:
                 pass
 
